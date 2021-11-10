@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome To Random Quote Generator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+
+<body>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-6">
+                    <h1 class="justify-content-center">Random Quote Generator</h1>
+                    <p>This website will generate Quotes just at the click of a button!</p>
+                </div>
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+    </header>
+
+<div class="container">
+    <div class="row row-content align-items-center">
+        <div class="col-12 col-sm-4 order-sm-first col-md-3">
+            <h3 id="title">Title</h3>
+        </div>
+        <div class="col-sm order-sm-last col-md">
+         
+            <p id="poem">ipsom Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quaerat, debitis vel quibusdam maxime fugiat animi nisi reiciendis quisquam dolore libero, sequi aut odit possimus consequatur iste porro? Non, provident.</p>
+        </div>
+    </div>
+
+<div class="row row-content align-items-center">
+    <div class="col-12 col-sm-2 offset-sm-9">
+    <button type="button"  class="btn btn-dark btn-outline-info btn-lg" id="btn">Click Me</button>
+</div>
+</div>
+</div>
+
+
+<footer>
+     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright: Epshita Chakravarty
+  
+  </div>
+</footer>
+<script>
+const api = " http://api.quotable.io/random";
+
+const poem = document.getElementById("poem");
+const title = document.getElementById("title");
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", getQuote);
+
+function getQuote() {
+  fetch(api)
+    .then((res) => res.json())
+    .then((data) => {
+      poem.innerHTML = data.content;
+        title.innerHTML = data.author;
+    
+    });
+   
+}
+</script>
+ 
+
+<script src="./node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="./node_modules/popper.js/dist/popper.min.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
